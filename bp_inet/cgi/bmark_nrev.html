@@ -1,0 +1,32 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+    <title>BinProlog CGI form script</title>
+  </head>
+  <body>
+    <h2>
+      BinProlog Naive Reverse Benchmark.</h2>
+    Results in <i>KLIPS</i>, i.e<i>. </i>thousands of inferences per second.
+    <br>
+    It seems that even on <i>mono-processor</i> NTs, there's some speed-up for <i>multi-threaded</i>
+    execution,
+    <br>
+    probaly due to improved locality of reference. For large values of the reversed 
+    list's length, simultaneus
+    <br>
+    garbage collection may occur on each thread, independently.
+    <p><form method="post" target="answer" action="../bin/bp.exe?../cgi/bmark_nrev.pro">
+        <b>Iterations:<input name="iterations" type="text" size="3" value="500">Length of 
+          reversed list:<input name="length" type="text" size="3" value="200">Number of 
+          threads:</b><input name="threads" size="1" type="text" value="3">
+        <p>Feel free to add your comments related to this program and BinProlog.
+          <br>
+          <textarea align="top" name="comment" rows="3" cols="60"></textarea><input align="bottom" type="submit" value="Submit">
+      </form>
+    <p><a href="bmark_nrev.pro">Source</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../library/cgi_lib.pro">
+        CGI library</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.binnetcorp.com/BinProlog">
+        NEW multi-threaded BinProlog</a>
+  </body>
+</html>

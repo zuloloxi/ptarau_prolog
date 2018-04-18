@@ -1,0 +1,1 @@
+CALL go.bat go

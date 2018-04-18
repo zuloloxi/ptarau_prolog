@@ -1,0 +1,63 @@
+% PR based summarizing / focus extraction
+
+st1:-sum_url('http://cnn.com').
+
+sumtest:-
+  foreach(
+    (source_file(F),namecat(F,'.txt','',URL)),
+    sum_url(URL)
+  ).
+
+sum_url(URL):-
+  sum_url(URL,[],Rss),
+  println('SUMMARY'),
+  foreach(member(Rs,Rss),println(Rs)).
+   
+sum_url(URL,Qs,Rss):-
+  url2wss(URL,Wss),
+  show_sum(Wss,Qs,Rss).
+  
+show_sum(UWs,Qs,Rss):-
+   new_igraph([_],[Qs|UWs],G),
+   run_page_rank(G),rank_sort(G),
+   new_java_class('jwn.TGAdaptor',C),
+   invoke_java_method(C,show(G),_),
+   find_at_most(5,Ws,(vertex_of(G,I),vertex_data(G,I,Ws)),Rss).
+   
+summarize(UWs,Qs,As):-
+  nonvar(UWs),
+  findall(W,wmember(W,Qs,UWs),Ws),
+  As=Ws.
+  
+new_igraph(Ts,Wss,G):-
+  new_ranked_graph(G),
+  foreach(nth_member(Ws,Wss,N),add_and_name_vertex(G,N,Ws)),
+  add_iedges(Ts,G,Wss).
+
+add_and_name_vertex(G,N,Ws):-
+  find_at_most(8,W,member(W,Ws),FirstWs),
+  codes_words(Cs,FirstWs),
+  name(S,Cs),
+  add_vertex(G,N,S).
+    
+add_iedges(Ts,G,Wss):-  
+  nth_member(Ws,Wss,I),
+    nth_member(Us,Wss,J),
+      findall(W,ifilter(Ts,Ws,Us,W),Xs),
+      length(Xs,LX),
+      LX>0,
+      add_edge(G,I,J,LX),
+  fail.
+add_iedges(_Ts,_G,_Wss).    
+
+ifilter(Ts,Ws,Us,W):-
+  member(W,Ws),
+  member(W,Us),
+  ifilter_word(Ts,[W]).
+  
+ifilter_word(Ts,Ws):-
+  content_only(Ws),
+  w2t(Ws,T),
+  member(T,Ts),
+  !.
+

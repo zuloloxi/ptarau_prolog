@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>BinProlog CGI form script</title>
+  </head>
+  <body>
+    <form method="post" target="answer" action="../bin/bp.exe?../cgi/smarket.pro">
+      <b>Simulation time in seconds:</b> <input name="time" type="text" size="2" value="1">
+      <b>Variation:</b> <input name="variation" type="text" size="4" value="0.05"> <b>Direction:</b>
+      <input name="direction" size="4" type="text" value="0.001">
+      <p>
+        Feel free to add your comments related to this program and BinProlog.
+      </p>
+      <textarea align="top" name="comment" rows="3" cols="60">
+      </textarea> <input align="bottom" type="submit" value="Submit">
+    </form>
+  </body>
+</html>

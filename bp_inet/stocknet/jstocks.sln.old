@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		Item:1 = analyze.pl
+		Item:2 = bgo.bat
+		Item:3 = cal.pl
+		Item:4 = csv_parser.pl
+		Item:5 = feed.pl
+		Item:6 = go.bat
+		Item:7 = index.html
+		Item:8 = input.html
+		Item:9 = jinni_server.pl
+		Item:10 = output.html
+		Item:11 = psa_handler.pl
+		Item:12 = queries.pl
+		Item:13 = README.txt
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

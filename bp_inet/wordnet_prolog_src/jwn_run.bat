@@ -1,0 +1,1 @@
+java -classpath ".;prolog.jar;jwn/TGGraphLayout.jar" jwn.TGAdaptor

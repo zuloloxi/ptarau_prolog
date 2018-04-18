@@ -1,0 +1,1 @@
+bp -b0 -a17 -h40000 -t4000 -s2000 jinni_server

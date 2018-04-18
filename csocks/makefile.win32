@@ -1,0 +1,38 @@
+CC=cl -DSTANDALONE_SOCKET_STUFF -DVCC=1 -I$(SRC) -O2 -Ot -Oy -Gd -W2 -DWIN32 -DNDEBUG -D_WINDOWS -nologo
+
+LIBS= -link /DEFAULTLIB:wsock32 /DEFAULTLIB:advapi32
+
+it: socks
+
+socks: server client rtop
+
+server:	server.obj socket.obj
+	$(CC) -o server server.obj socket.obj $(LIBS)
+
+client:	client.obj socket.obj
+	$(CC) -o client client.obj socket.obj $(LIBS)
+
+rtop:	rtop.obj socket.obj
+	$(CC) -o rtop rtop.obj  socket.obj  $(LIBS)
+
+server.obj :	server.c
+	$(CC) -c  server.c
+
+client.obj :	client.c
+	$(CC) -c client.c
+
+
+rtop.obj :	rtop.c
+	$(CC) -c rtop.c
+
+socket.obj :	../src/socket.c
+	$(CC) -o socket.obj  -c ../src/socket.c
+
+clean:
+	rm -f rtop rtop.exe server.exe client.exe *.obj server client rtop.obj  client.obj  server.obj  socket.obj  *.exe
+
+save:
+	rm -r -f bak
+	mkdir bak
+	cp rtop.c server.c client.c socket.c makefile makefile.unix makefile.win32 README.txt bak
+

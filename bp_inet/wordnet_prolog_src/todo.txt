@@ -1,0 +1,14 @@
+Turing World
+
+This is about talking to a "CPU-agent" to set memory and move control
+using a limited vocabulary natural language. It is a kind of kids
+assembler. The main purpose is simply to provide a minimal
+Turing-equivalent natural language subset. Most of the objects
+can be implemented using a Finite Function package.
+
+Conversational Agents as State Machines
+
+detecting the speech act in a question
+
+
+A conversational agent is an approximation of a blind, paralized from the neck person who also happens to be deprived of a few other sensorial functions, while being held in solitary confinment.

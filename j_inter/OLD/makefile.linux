@@ -1,0 +1,36 @@
+# makefile for the BinProlog/Java interface: BinProlog calling Java directly
+
+PROJ=bpj
+
+JAVA_HOME=/usr/local/jdk1.2.2
+#JAVA_LIB=$(JAVA_HOME)/jre/lib/i386/classic/libjvm.so 
+JAVA_LIB=$(JAVA_HOME)/jre/lib
+#JAVA_LIB1=$(JAVA_HOME)/jre/lib/i386/
+#JAVA_LIB1=$(JAVA_HOME)/jre/lib/i386/green_threads/libhpi.so
+
+# chose this for redistributable runtime
+#BP_LIB=:../lib/bpr_lib.a 
+BP_LIB=../lib/bp_lib.a
+ 
+CC=gcc -O2
+
+$(PROJ): $(PROJ).o $(PROJ).class
+	$(CC) -s  $(PROJ).o -o $(PROJ) $(BP_LIB) -L$(JAVA_LIB) $(JAVA_LIB1) -lm -lpthread
+
+$(PROJ).o: $(PROJ).c
+	$(CC) -c $(PROJ).c -I../lib -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+
+$(PROJ).class: $(PROJ).java
+	javac -O $(PROJ).java
+
+realclean clean:
+	rm -f *.o *.obj *.exp *.lib *.exe *.class
+
+gz save zip bak:	clean
+	rm -r -f bak
+	mkdir bak
+	cp *.* makefile bak
+	mv bak $(PROJ)$(VER)
+	zip -r $(PROJ)$(VER) $(PROJ)$(VER)
+	mv -f $(PROJ)$(VER).zip ..
+	rm -r -f $(PROJ)$(VER)

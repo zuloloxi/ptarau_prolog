@@ -1,0 +1,7 @@
+help(122803171,'a guest','a@b.c.d','a guest').
+help(122803326,'a guest','a@b.c.d','a guest').
+help(122803403,'a guest','a@b.c.d',consult).
+help(122803570,'a guest','a@b.c.d','').
+help(122803634,'a guest','a@b.c.d',consult).
+help(122803653,'a guest','a@b.c.d',findall).
+help(122803720,'a guest','a@b.c.d',findall).

@@ -1,0 +1,15 @@
+:-op(700,xfx,(is)).
+:-op(880,xfx,(extends)).
+:-op(890,xfx,(with)).
+:-op(900,fx,(nospy)).
+:-op(900,fx,(spy)).
+:-op(900,fy,(not)).
+:-op(1150,fx,(delphi)).
+:-op(1150,fx,(discontiguous)).
+:-op(1150,fx,(dynamic)).
+:-op(1150,fx,(memo)).
+:-op(1150,fx,(mode)).
+:-op(1150,fx,(module)).
+:-op(1150,fx,(multifile)).
+:-op(1150,fx,(public)).
+:-op(1150,fx,(type)).

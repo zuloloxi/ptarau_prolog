@@ -1,0 +1,992 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en] (WinNT; I) [Netscape]">
+   <title>3cm</title>
+</head>
+<body>
+
+<center><b><font face="Comic Sans MS"><font color="#000099"><font size=+2>LogiMOO
+II - A Shared Virtual World Shell -</font></font></font></b>
+<p><b><font face="Comic Sans MS"><font color="#000099"><font size=+1>Documentation
+based on a paper by</font></font></font></b>
+<br><b><font face="Comic Sans MS"><font color="#000099"><font size=+1>Paul
+Tarau, Koen De Bosschere, Veronica Dahl and Stephen Rochefort,</font></font></font></b>
+<br><b><font face="Comic Sans MS"><font color="#000099"><font size=+1>published
+in Journal of Logic Programming (March, 1999)</font></font></font></b></center>
+
+<h2>
+Installation:</h2>
+LogiMOO requires a BinProlog based Internet Server. To start it on a computer
+called "<font color="#3333FF">my_machine.my_domain.com</font>" do the following:
+<p>If you have the source distribution type:
+<p><font color="#3333FF">bp world_server</font>
+<p>otherwise (binary distribution - you can redistribute this to your customers
+as well) type
+<p><font color="#3333FF">bpr world_server.wam</font>
+<p>The&nbsp; server will listen on port 8888. Start your local LogiMOO
+client by opening with Netscape or explorer the link:
+<p>http://localhost:8888/<i><font color="#999900">&lt;absolute path where
+the file is></font></i>/world_guest.html
+<p>To make your version of LogiMOO available on the <i>Internet</i> please
+edit in the file world_guest.html the line containing <font color="#3366FF">action="http://localhost:8888/nofile.pro"</font>
+to reflect the location of your server's location i.e something like:
+<p>action=<font color="#3333FF">"http://my_machine.my_domain.com:8888/nofile.pro"</font>
+<p>The server will handle LogiMOO queries directly, WITHOUT requiring&nbsp;
+another Web Server. This is a completely self contained Web program as
+far as the server has a static, well known Web address.
+<p><font color="#000000">If you wish, enter clauses to be assumed before
+the query is run in the lower window. For instance, if you choose language
+</font><i><font color="#3333FF">french</font></i><font color="#000000">
+and add "</font><font color="#3333FF">cuisine@kitchen.</font><font color="#000000">"&nbsp;
+the query processor will understand something like </font><font color="#993300">"</font><font color="#3333FF">Batis
+une cuisine, va la, ou suis je?</font><font color="#993300">"</font>
+<p><i><font color="#000000">Language files </font><font color="#3333FF">(<a href="english.pl">english.pl</a></font></i>,
+<i><font color="#3333FF"><a href="spanish.pl">spanish.pl</a></font></i>,
+<i><font color="#3333FF"><a href="french.pl">french.pl</a>)
+</font><font color="#000000">are
+for now very basic, suggestions on improvements and files for other languages
+are welcome, please send them to </font><font color="#FF0000">tarau@cs.unt.edu</font><font color="#3333FF">.</font><font color="#000000">For
+now, output is english only - we plan to have multi-lingual output in the
+near future. Please read&nbsp; the LogiMOO </font><font color="#3333FF"><a href="UserGuide.html">Online
+User Guide</a></font></i>&nbsp;<i><font color="#3333FF"> </font><font color="#000000">for
+more information.</font></i>
+<br>&nbsp;
+<h2>
+USING LOGIMOO</h2>
+
+<p><br><img SRC="imageCRL.JPG" height=662 width=747>
+<p>The LogiMOO interface <font color="#3366FF"><a href="world_guest.html">world_guest.html</a></font><font color="#000000">shown
+in the figure has a number of input windows. Make sure you fill them in
+with meaningful values. In particular, the make sure the Home Page field
+points to a place where files (*.html, *.gif, *.jpg, *.wrl) corresponding
+to the objects you build using the </font><font color="#3333FF">craft
+</font><font color="#000000">command,
+exists, and the files are indeed there.</font>
+<p><font color="#000000">The following trace shows the output of the </font><font color="#3333FF">trace</font><font color="#000000">
+command, and the Natural Language capabilites of the current version.</font>
+<p><font color="#000000">login=guest</font>
+<br><font color="#000000">e-mail=a@b.c.d</font>
+<br><font color="#000000">home=http://</font>
+<br><font color="#000000">&lt;= test</font>
+<br><font color="#000000">login as: guest with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">TEST:&nbsp; I am Paul.</font>
+<p><font color="#000000">login as: paul with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Dig an office, go there.</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; office</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Go to the lobby. Look.</font>
+<p><font color="#000000">you are in the&nbsp; lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">Ports&nbsp; from lobby :</font>
+<p><font color="#000000">Users at this place,&nbsp; lobby :</font>
+<br><font color="#000000">guest</font>
+<br><font color="#000000">paul</font>
+<p><font color="#000000">Objects at this place,&nbsp; lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am the Wizard. Where am I?</font>
+<p><font color="#000000">login as: wizard with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am Joe. Where am I?</font>
+<p><font color="#000000">login as: joe with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Craft a dog-gif. Give it to the Wizard!</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">'wizard:I give you dog.gif'</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Craft a cat. Where is the cat? Who
+has it?</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">cat is in lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">joe has cat</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Dig the bedroom. Go there. Dig a kitchen,
+open a port south to the kitchen, go there, open a port north to the bedroom.
+Go there. Craft a song-au. Give it to the Wizard. Look.</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; bedroom</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; kitchen</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; bedroom</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">'wizard:I give you song.au'</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">Ports&nbsp; from bedroom :</font>
+<br><font color="#000000">south to kitchen</font>
+<p><font color="#000000">Users at this place,&nbsp; bedroom :</font>
+<br><font color="#000000">joe</font>
+<p><font color="#000000">Objects at this place,&nbsp; bedroom</font>
+<br><font color="#000000">cat</font>
+<br><font color="#000000">song.au</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am the Wizard. Where am I? Go to
+the kitchen. Look!</font>
+<p><font color="#000000">login as: wizard with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; kitchen</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">Ports&nbsp; from kitchen :</font>
+<br><font color="#000000">north to bedroom</font>
+<p><font color="#000000">Users at this place,&nbsp; kitchen :</font>
+<br><font color="#000000">wizard</font>
+<p><font color="#000000">Objects at this place,&nbsp; kitchen</font>
+<br><font color="#000000">dog.gif</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am Joe. Craft a cat. Where is the
+cat?</font>
+<p><font color="#000000">login as: joe with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">cat is in bedroom</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Craft a Gnu. Who has it? Where is
+it? Where am I?</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">joe has gnu</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">gnu is in bedroom</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">you are in the&nbsp; bedroom</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Give to the Wizard the Gnu that I
+crafted. Who has it?</font>
+<p><font color="#000000">'wizard:I give you gnu'</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">wizard has gnu</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am Mary.</font>
+<p><font color="#000000">login as: mary with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Say hi!</font>
+<p><font color="#000000">&nbsp;hi!</font>
+<p><font color="#000000">TEST:&nbsp; I am the Joe.</font>
+<p><font color="#000000">login as: joe with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Say hi!</font>
+<p><font color="#000000">&nbsp;hi!</font>
+<p><font color="#000000">TEST:&nbsp; Craft a grammar.</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Look. Give the grammar that I crafted
+to Mary.</font>
+<br>&nbsp;
+<p><font color="#000000">Ports&nbsp; from bedroom :</font>
+<br><font color="#000000">south to kitchen</font>
+<p><font color="#000000">Users at this place,&nbsp; bedroom :</font>
+<br><font color="#000000">joe</font>
+<p><font color="#000000">Objects at this place,&nbsp; bedroom</font>
+<br><font color="#000000">cat</font>
+<br><font color="#000000">song.au</font>
+<br><font color="#000000">gnu</font>
+<br><font color="#000000">grammar</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">'mary:I give you grammar'</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am Mary. Look.</font>
+<p><font color="#000000">login as: mary with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">Ports&nbsp; from lobby :</font>
+<p><font color="#000000">Users at this place,&nbsp; lobby :</font>
+<br><font color="#000000">guest</font>
+<br><font color="#000000">paul</font>
+<br><font color="#000000">mary</font>
+<p><font color="#000000">Objects at this place,&nbsp; lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Who has the grammar?</font>
+<p><font color="#000000">mary has grammar</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am Joe.</font>
+<p><font color="#000000">login as: joe with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; I am Bill.</font>
+<p><font color="#000000">login as: bill with password: none</font>
+<br><font color="#000000">your home is at http://</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Look.</font>
+<br>&nbsp;
+<p><font color="#000000">Ports&nbsp; from lobby :</font>
+<p><font color="#000000">Users at this place,&nbsp; lobby :</font>
+<br><font color="#000000">guest</font>
+<br><font color="#000000">paul</font>
+<br><font color="#000000">mary</font>
+<br><font color="#000000">bill</font>
+<p><font color="#000000">Objects at this place,&nbsp; lobby</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Craft a book. Give the book to Joe.</font>
+<p><font color="#000000">=> The query succeeded !</font>
+<br><font color="#000000">'joe:I give you book'</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Look.</font>
+<br>&nbsp;
+<p><font color="#000000">Ports&nbsp; from lobby :</font>
+<p><font color="#000000">Users at this place,&nbsp; lobby :</font>
+<br><font color="#000000">guest</font>
+<br><font color="#000000">paul</font>
+<br><font color="#000000">mary</font>
+<br><font color="#000000">bill</font>
+<p><font color="#000000">Objects at this place,&nbsp; lobby</font>
+<br><font color="#000000">book</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<p><font color="#000000">TEST:&nbsp; Who has the book?</font>
+<p><font color="#000000">joe has book</font>
+<br><font color="#000000">=> The query succeeded !</font>
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+THE ARCHITECTURE OF LogiMOO</h2>
+
+<h2>
+Abstract</h2>
+LogiMOO is a BinProlog-based Virtual World running under Netscape and Internet
+Explorer for distributed group-work over the INTERNET and user-crafted
+virtual places, virtual objects and agents. LogiMOO is implemented on top
+of a multi-threaded blackboard-based logic programming system (BinProlog)
+and a controlled English interface written in terms of Assumption Grammars.
+Its language coverage is extensible in that the user can incorporate new
+nouns, verbs and adjectives as needed by changes in the world. Immediate
+evaluation of world knowledge by the parser yields representations which
+minimize the unknowns allowing us to deal with advanced Natural Language
+constructs like anaphora and relativization. We take advantage of the simplicity
+of our controlled language to provide as well an easy adaptation to other
+natural languages than English, with English-like representations as a
+universal interlingua.
+<p><i>Keywords: Virtual Worlds, high-level HTML,VRML,CGI programming, blackboard-based
+logic programming, Linda coordination, linear/intuitionistic assumptions,
+client-server applications in Prolog, embedded logic engines, natural language
+analysis, control through speech, multilingual interface</i>
+<h2>
+1&nbsp; Introduction</h2>
+MUDs and MOOs (Multi User Domains - Object Oriented) first introduced virtual
+presence and interaction in the context of networked games. Traditional
+MOOs use places called <i>rooms</i> and chat facilities to put in touch
+users represented by <i>avatars</i> for entertainment or information exchange
+purposes.
+The architecture is usually client/server, with users connecting to the
+server either through conventional telnet sessions or through more special
+purpose MOO shells.
+<p>Their direct descendents, Virtual Worlds, provide a strong unifying
+metaphor for various forms of net-walk, net-chat, and Internet-based virtual
+presence in general. They start where usual HTML shows its limitations:
+they do have state and require some form of virtual presence. <i>Being
+there</i> is the first step towards full virtualization of concrete ontologies,
+from entertainment and games to schools and businesses.
+<p>Some fairly large-scale projects (Intel's Moondo, Sony's Cyber Passage,
+Black Sun's CyberGate, Worlds Inc.'s WorldChat, Microsoft's VChat) converge
+towards a common interaction metaphor: an avatar represents each participant
+in a multi-user virtual world. Information exchange reuses our basic intuitions,
+with almost instant <i>learnability</i> for free.
+<p>The sophistication of their interaction metaphor, with VRML landscapes
+and realistic <i>avatars</i> moving in shared multi-user virtual spaces,
+will soon require high-level agent programming tools, once the initial
+fascination with looking human is not enough, and the automation of complex
+behavior becomes the next step. Towards this end, high-level coordination
+and deductive reasoning abilities are among the most important additions
+to various virtual world modeling languages.
+<p>Presently, despite their graphical sophistication, virtual worlds do
+not allow <i>controlling</i> behavior and object creation i.e., <i>programming
+with words</i>. Yet their characteristics favor the use of natural language:
+each virtual world represents a particular domain of interest, so that
+its associated relevant subset of language is naturally restricted; and
+the command language into which natural language sentences would have to
+be parsed is formal and straightforward enough while being already relatively
+close to natural language.
+<p>Our Virtual World implementation, LogiMOO is based on a set of embeddable
+logic programming components which inter-operate with standard Web tools.
+<br>&nbsp;
+<h2>
+2&nbsp; The architecture of LogiMOO</h2>
+
+<p><br>LogiMOO is a BinProlog-based Virtual World running under Web browsers
+for distributed group-work over the Internet and user-crafted virtual places,
+virtual objects and agents.
+<p>The main layers of the LogiMOO architecture are:
+<ul>
+<li>
+<i>the underlying BinProlog system</i> which also provides client/server
+and CGI programming</li>
+
+<li>
+<i>LogiMOO's builtin operations</i> providing a set of MOO-like operations
+implemented as compiled Prolog predicates</li>
+
+<li>
+<i>the Natural Language compiler</i> which translates sentences to built-in
+LogiMOO predicates</li>
+
+<li>
+<i>the extensible user interface layer</i>, providing dynamic creation
+of server-side persistent objects, as result of Natural Language or built-in
+LogiMOO commands</li>
+</ul>
+The core of LogiMOO II is a&nbsp; CGI POST method compliant BinProlog based
+HTTP server which interacts browser based HTML forms. The LogiMOO kernel
+behaves as any other MOO while offering a choice between interactive Prolog
+syntax (by preceding a command with @) and a Controlled English parser
+allowing people unfamiliar with Prolog to get along with the basic activities
+of the MOO: place and object creation, moving from one place to the other,
+giving objects, etc. In order to achieve this, we have incorporated natural
+language consultation capabilities into LogiMOO.
+<h3>
+2.1&nbsp; Linda style coordination</h3>
+LogiMOO II is built upon a dedicated Internet server to which clients connect
+directly from the browser, without the usual overhead of calling a CGI
+script - very much like Java servlets. Persistent data is kept on a data
+area called blackboard.
+<p>LogiMOO's primitive operations are implemented on top of BinProlog's
+Linda-style operations:
+<p><tt><font size=-1>in(X)</font></tt><font size=-1>&nbsp; Waits until
+it can take an object matching X from the server</font>
+<br><tt><font size=-1>all(X,Xs)</font></tt><font size=-1>&nbsp; Reads the
+list Xs matching X currently on the server</font>
+<br><tt><font size=-1>run(Goal)</font></tt><font size=-1>&nbsp; Starts
+a thread executing Goal</font>
+<br><tt><font size=-1>local_out(X)</font></tt><font size=-1>&nbsp; Puts
+private information X on the local default blackboard.</font>
+<br><tt><font size=-1>local_rd(X)</font></tt><font size=-1>&nbsp; Checks
+whether an object matching X is on the local blackboard.</font>
+<br><font size=-1><tt>halt</tt>&nbsp; Stops current thread</font>
+<p>The presence of the <tt>all/2</tt> collector compensates for the lack
+of non-deterministic operations. Note that the only blocking operation
+is <tt><font size=-1>in/1</font></tt>, and that that blocking <tt>rd/1</tt>
+is easily emulated in terms of <tt>in/1</tt> and <tt>out/1</tt>. Non-blocking
+<tt>rd/1</tt>
+is emulated with <tt>all/2.</tt>
+<p>A number of derived operations are built on top of the primitive LogiMOO
+operations.
+<p><font size=-1>rd(X): checks whether an object matching X is on the server's
+blackboard.</font>
+<br><tt><font size=-1>cout(X)</font></tt><font size=-1>&nbsp; Conditional
+out: Puts X on the server unless an object matching X is found on the server.</font>
+<br><tt><font size=-1>cin(X)</font></tt><font size=-1>&nbsp; Conditional
+in: Takes an object matching X from the server and fails if no such object
+is found.</font>
+<br><tt><font size=-1>forall(X,G)</font></tt><font size=-1>&nbsp; Executes
+goal G for all objects on the server matching X.</font>
+<h3>
+2.2&nbsp; The LogiMOO kernel</h3>
+<i>Verbs</i> available in LogiMOO are defined through a set of Prolog predicates
+hiding the complexities of the distributed communication model through
+the usual metaphors: places (starting from a default lobby), ports, ability
+to <i>go</i> rom one place to another <i>ownership</i> of objects, the
+ability to <i>transfer</i> ownership (give).
+<p>To conditionally create a place (unless it exists) we use: <tt>dig(Place)</tt>.
+<pre>go(Dir):-
+&nbsp; whereami(Place),
+&nbsp; rd(port(Place,Dir,NewPlace)),
+&nbsp; whoami(Me),
+&nbsp; move(Me,Place,NewPlace),
+&nbsp; forall(has(Me,O),move(O,Place,NewPlace)).</pre>
+<tt>go/1</tt> verifies accessibility of the target place through a port
+and updates the avatar's location. Note that <tt>forall/2</tt> can be used
+to make someone's belongings follow him. As in the real world, this is
+usually done selectively on a subset of a user's belongings.
+<p>Creating things with <tt>craft/1</tt> marks them with ownership:
+<pre>craft(O):-whoami(Me),
+&nbsp; rd(contains(Place,Me)),
+&nbsp; out(contains(Place,O)),
+&nbsp; out(has(Me,O)).</pre>
+<tt>Craft/1</tt> gets the place where the user's avatar is located, then
+puts the object there and asserts ownership of the object by the user's
+avatar.
+<p>Property transfer is prototyped as follows:
+<pre>gives(From,To,O):-
+&nbsp; cin(has(From,O)),
+&nbsp; out(has(To,O)).
+
+
+give(Who,What):-
+&nbsp;&nbsp; whoami(Me),
+&nbsp;&nbsp; cin(has(Me,What)),
+&nbsp;&nbsp; out(has(Who,What)).</pre>
+<tt>Give/2</tt> simply changes ownership of the object by updating the
+<tt>has/2</tt>
+fact referring to it on the blackboard.
+<p><tt>Look/0</tt> recognizes specific objects and shows them in the most
+useful form.
+<p>Note that the unusual expressiveness of the blackboard for an important
+number of roles (messages, synchronization, etc.) shows that some of the
+traditional programming patterns are just implementation related intellectual
+artifacts. The existence of a unique construct covering them all (Linda+unification)
+helps towards building more programmer friendly, higher level abstractions.
+<h3>
+2.3&nbsp; LogiMOO as a client/server Web application</h3>
+Objects in LogiMOO are represented as hyper-links (URLs) towards their
+owners' home pages where their native representation actually resides in
+various formats (HTML, VRML, GIF, JPEG, etc.).
+<p>Queries are submitted through the CGI POST method. The BinProlog Internet
+server reads the standard input using
+<br>the CONTENT_LENGTH environment variable and after a small filter&nbsp;
+cleans up hexadecimal escapes, it extracts the actual query and its variables
+through a list-of-characters-to-term conversion.
+<p>Objects crafted by users are shown as URL's, relative to their homes.
+This allows users to <i>put</i> into LogiMOO objects of various formats
+(VRML, JPEG, WAV, AU) and gives multi-media capabilities for free. LogiMOO
+keeps the link while the actual object resides on the user's computer accessible
+by clicking on a link so that the user is free to update the actual object
+without having to notify LogiMOO. Note also that we do not need to provide
+navigation in VRML worlds or user defined HTML links - this is better to
+be left to the browser itself. What we provide is the ability to create
+those persistent links dynamically, as the result of a controlled natural
+language interaction with the user or her decision to trigger the action
+of a building agent.
+<p>We can however give the illusion that BinProlog commands from within
+LogiMOO actually allow arbitrary Web navigation through use of a one line
+JavaScript, dynamically generated as an answer to a query:
+<pre><font size=-1>&nbsp; auto_show(URL,File) :-
+
+&nbsp;&nbsp;&nbsp; make_cmd(['&lt;body
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; onLoad="window.open(''',URL,'/',File,''',''_self'')">'],Cmd),
+
+&nbsp;&nbsp;&nbsp; writeln([Cmd]).</font></pre>
+For instance, typing:
+<pre><font size=-1>&nbsp; @show_document('http://www.cs.unt.edu/~tarau','index.html')</font>
+
+</pre>
+in the LogiMOO Prolog query text area, will instantly show the first author's
+home page in the Netscape output frame, from where the user can further
+explore links independently. Return to LogiMOO is achieved simply by clicking
+on the VRML floor of the room.
+<p>Clearly, achieving exclusively in Prolog or any other existing LP or
+CLP the equivalent of what we have developed in about 1-man/month total
+programming time would require a significant effort. We are more and more
+convinced that embedding logic programming tools in a multi-paradigm environment
+can compensate for their lack of advanced visual and Internet programming
+abilities and, ultimately, make them competitive for commercial development
+despite their small market share.
+<p>As an embedded application, LogiMOO acts as a broker between various
+multi-paradigm, multi-media Netscape components. It therefore keeps (a
+minimum amount of) state and user information. Its full Prolog command
+language gives arbitrary extensibility through objects and agents. Although
+file transfers and various protocols are implementable with the underlying
+Multi-BinProlog system, we have chosen to represent non-symbolic objects
+as hyper-links towards their owner's WWW home. Our design philosophy was
+to duplicate as little existing components as possible while achieving
+as much functionality as possible. At some point, we expect that LogiMOO
+will grow by itself through user extensions, much more than our own development
+effort, as a truly open virtual world, together with its present and future
+VRML and Java-centric cousins.
+<br>&nbsp;
+<h2>
+3&nbsp; The natural language based user interface</h2>
+
+<p><br>There is a very strong move towards the use of natural language
+as a command language today, with General Magic, Microsoft, IBM and telecommunication
+companies pioneering its use for major industrial applications which routinely
+use spoken language to communicate with the user both for input and output.
+<p>We expect that as the domain of intelligent software agents matures,
+the current emphasis on the interaction will be balanced towards more sophisticated
+reasoning abilities, with LP in a very good position to provide them.
+<p>One of the key design ideas behind LogiMOO was that natural language
+has a serious potential as an effective programming language, at least
+as far as end user interaction (scripting) is concerned. Our views are
+confirmed by programs like the recently released Microsoft Agent or General
+Magic's Portico, a voice-only intelligent assistant able to learn and remember
+the state its interaction with the user.
+<p>LogiMOO is one of the very few existing virtual worlds that can be controlled
+with natural language. The reasons why we wanted to provide LogiMOO with
+a NL interface are:
+<ol type="1">
+<li>
+natural language is the most convenient way for us to communicate;</li>
+
+<li>
+a natural language interface is the first step towards voice-controlled
+interaction with the virtual world</li>
+
+<li>
+a virtual world is a perfect environment to experiment with natural language
+because the domain of discourse is limited;</li>
+
+<li>
+natural language is needed for the upcoming speech recognition/generation
+based human/computer interaction tools</li>
+</ol>
+The peculiar features of the world to be consulted- a virtual world- induced
+novel parsing features which are interesting in themselves: flexible handling
+of dynamic knowledge, immediate evaluation of noun phrase representations,
+allowing us to be economic with representation itself, inference of some
+basic syntactic categories from the context, a treatment of nouns as proper
+nouns, easy extensibility within the same language as well as into other
+natural languages. We shall examine each of these features in turn, after
+describing our natural language coverage.
+<p>It is interesting that the use of these features results in a completely
+deterministic parser (no backtrack).
+<h3>
+3.1&nbsp; Language coverage</h3>
+Since LogiMOO handles mostly commands, outermost sentences will be imperative
+sentences. In these, the subject (the avatar that the user is controlling)
+is usually left implicit (notice however that embedded sentences, such
+as relative clauses, are descriptive rather than imperative, and therefore
+do include a subject). The user first enters a set of imperative subjectless
+sentences, and this input is sent through the parser to be converted into
+LogiMOO kernel predicates which are then executed to complete the actions.
+Verbs in the LogiMOO environment represent actions that can take place
+in the virtual world.
+<p>Because they are in imperative form, with their subject left implicit,
+LogiMOO sentences reduce to verb phrases, which can be of the following
+forms:
+<blockquote><i>An intransitive verb.</i>
+<br><i>A transitive verb followed by a noun.</i>
+<br><i>A transitive verb followed by a noun phrase.</i>
+<br><i>A transitive verb followed by a prepositional phrase.</i>
+<br><i>A bitransitive verb followed by two noun phrases.</i>
+<br><i>A bitransitive verb followed by a noun phrase and a prepositional
+phrase.</i></blockquote>
+A prepositional phrase is defined as
+<blockquote><i>A preposition followed by a noun phrase.</i></blockquote>
+The noun phrase forms allowed are
+<blockquote><i>A proper name.</i>
+<br><i>A pronoun (anaphora).</i>
+<br><i>A determiner followed by a noun.</i></blockquote>
+In addition, we identify communication inputs which occur when a user wants
+his/her avatar to say, whisper or yell some message, e.g.,
+<blockquote><i>say hi how are you.</i></blockquote>
+This form of input is introduced by either:
+<blockquote><i>The word whisper followed by a prepositional phrase followed
+by a message.</i>
+<br><i>The word say followed by a message.</i>
+<br><i>The word yell followed by a message.</i></blockquote>
+The following table shows some sample parses.
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td><b>NL Input</b></td>
+
+<td><b>Translation</b></td>
+
+<td><b>LogiMOO action</b></td>
+</tr>
+
+<tr>
+<td></td>
+</tr>
+
+<tr>
+<td>look.&nbsp;</td>
+
+<td><tt>look.</tt></td>
+
+<td>Provides a description of the room the</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+
+<td>users avatar currently occupies.&nbsp;</td>
+</tr>
+
+<tr>
+<td>craft a car.&nbsp;</td>
+
+<td><tt>craft(car).</tt></td>
+
+<td>Creates a virtual object, car, owned&nbsp;</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+
+<td>by the avatar.&nbsp;</td>
+</tr>
+
+<tr>
+<td>craft a car,&nbsp;</td>
+
+<td><tt>craft(car),</tt></td>
+
+<td>Creates a virtual object, car, and gives it to</td>
+</tr>
+
+<tr>
+<td>give it to john.&nbsp;</td>
+
+<td><tt>give(john, car).</tt></td>
+
+<td>john.&nbsp;</td>
+</tr>
+
+<tr>
+<td>take the car,&nbsp;</td>
+
+<td><tt>take(car).</tt></td>
+
+<td>Puts a car object crafted by john into&nbsp;</td>
+</tr>
+
+<tr>
+<td>that john crafted.&nbsp;</td>
+
+<td></td>
+
+<td>the avatar's possession.&nbsp;</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+
+<td></td>
+</tr>
+</table>
+
+<center>
+<p>Table 1: Sample Parses</center>
+
+<p>Notice that the last command in the table produces the name (i.e., <i>car</i>)
+which designates the object referred to by the noun phrase. This name is
+obtained by consulting the world knowledge to get the name of the car that
+John crafted. Ambiguity regarding which car is meant among several in the
+world is avoided because the same name invoked by a different user, or
+by the same user in a different room, has a different representation internally.
+If, however, the user wants to craft more than one car in the same room,
+each should be differently designated in the command list (e.g., craft
+car1, give it to wizard, craft car2, give it to Stephen).
+<h3>
+3.2&nbsp; Handling Dynamic Knowledge</h3>
+Because virtual worlds are eminently constructive, their dynamic changes
+must be accommodated in a flexible yet discriminatory manner. For instance,
+we must distinguish between <i>static knowledge</i>, i.e. world knowledge
+that exists before a user's sequence of world-changing commands, and <i>dynamic
+knowledge</i>, i.e. the new knowledge that results from those commands,
+since these may in some cases be tentative and subject to revision.
+<p>Static knowledge is obtained previous to the parsing of a sequence of
+natural language commands, through a small Prolog program which stores
+the current state of the world in predicates such as <tt>is_avatar(X),
+is_crafted(X)</tt>, etc.
+<p>Dynamic knowledge is created by execution of a natural language command,
+and described with the aid of the same predicates as static knowledge,
+but these are put on a blackboard instead of simply extending the static
+world knowledge. Once the complete series of a user's commands has been
+executed, with later commands possibly having revised the results of previous
+commands in the same interaction, the resulting blackboard information
+is made available to be used in the next iteration, for gathering the state
+of the world before the next sequence of natural language commands.
+<h3>
+3.3&nbsp; Multisentential Anaphoric Reference</h3>
+Our system maintains yet another type of knowledge- <i>hypothetical knowledge</i>,
+accessible only by the parser, which helps it decide what parts of speech
+should be related. In particular, the knowledge that noun phrases are potential
+referents of an anaphora is kept through linear assumptions which are consumed
+upon encountering, for instance, a pronoun which might refer to the noun
+phrase hypothesized as a referent. For example, while analyzing the sequence
+of commands: ``Craft a flower, give it to John'', the parser hypothesizes
+that ``flower'' might turn out to be the referent of some pronoun appearing
+somewhere in the rest of the discourse, and upon encountering ``it'', the
+right object (namely, ``flower'') is associated with this pronoun. Although
+not shown above, gender and number information is also useful to check
+compatibility between a potential referent and an anaphora.
+<h3>
+3.4&nbsp; Language Extensibility</h3>
+<b>Within the same language</b>
+<p>Our goal of language extensibility comes from the need to dynamically
+introduce new concepts into the world, and with them, new vocabulary in
+the analyzer. For instance, ``craft a gnu'' must be accepted even if no
+gnus exist in the virtual world yet, and no corresponding entry exists
+in the lexicon.
+<p>For this reason, our parser recognizes a noun from its context in the
+sentence rather than from any lexical definition. Adjectives can be treated
+similarly, by requiring them to be used in controlled fashion, e.g. within
+relative clauses, as in ``a car that is red'', so that the parser can infer
+adjectival function unequivocally from the word's position as an attribute.
+Note that since the world is described in terms of physical metaphors,
+adjectives will refer to such properties as color, shape, position, etc.,
+and statements about them will in general be conditionless clauses (facts).
+<p>Allowing verbs to be inferred from context is more difficult. The syntactic
+definition part of defining new verbs can be done by example, i.e. by gleaning
+from the user information re. number of arguments from similarity with
+other proposed sample verbs, on which the user would have to just click
+(e.g., ``smile'' as a sample intransitive verb, ``look'' as a sample transitive
+verb, ``give'' as a sample bitransitive verb, etc.). This allows user-friendliness
+by not requiring the user to handle syntactic notions such as ``transitive''
+or ``intransitive'', but instead leaving it to our interface to invisibly
+replicate a similar lexical definition from the analogy with existing sample
+words. But the predicates obtained from verbs as a result of parsing cannot
+simply translate into a constant (as for most nouns) or a unary predicate
+(as for most adjectives), since in general, they must translate into n-ary
+predicates corresponding to actions, and the verb being a new one, these
+actions can in general require description through full Prolog clauses.
+Our present solution is to require the user to provide a Prolog definition
+of the new command that the new verb refers to. Future work will investigate
+higher level solutions to this problem.
+<p>Of course, we can think of extending a grammar with other types of words
+than nouns, verbs and adjectives. However, we have chosen to focus on just
+these categories because they are the most likely to be application-dependent,
+and because in the case of verbs, they are the ones that will induce corresponding
+new LogiMOO commands.
+<p><b>Extensibility to other natural languages</b>
+<p>Given that we accept only controlled language, and that some words,
+such as nouns and adjectives, do not need to be explicitly defined in a
+lexicon, but are inferred by the system from their first use in a command,
+we have a simple way of adapting our English analyzer into other languages.
+<p>In order to parameterize the language, we record which language we are
+using in the call, by means of an intuitionistic implication, e.g.:
+<pre><font size=-1>?- [spanish]=>parse([susurra,al,brujo]).</font></pre>
+Lexical items will then be specialized according to the language, and will
+still induce an English-based semantic representation.
+<p>In order to explain how our rules do this, let us first observe that
+there are two types of rules in the English grammar which are language
+dependent:
+<ul>
+<li>
+rules that create a predicate name which is reminiscent of the noun, verb
+or adjective from which they are derived,</li>
+
+<li>
+rules containing a lexical item (i.e., a symbol preceded by <tt>'#'</tt>).</li>
+</ul>
+For rules of the first type, we shall maintain the English predicate name
+regardless of the language of origin, as a kind of interlingua allowing
+us to go from one language to another.
+<p>For rules of the second type, we replace <tt>'#native_word'</tt> by
+<tt>'@english_word'</tt>)
+in the grammar as in:
+<p><font size=-1>&nbsp;verb(give(X,Y)):- @give.</font>
+<p><font size=-1>@EnglishW:- #OtherW,OtherW@EnglishW.</font>
+<p>Finally, we define an English and alternative lexicons as collections
+of facts of the following form:
+<pre><font size=-1>&nbsp;%French word:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % English equivalen:
+&nbsp;donne@give.</font></pre>
+Notice that the language we're at is checked <i>after</i> the corresponding
+word is found. This is to ensure speed, since in this way, the word to
+be parsed will be recognized right away. In generation mode, we might want
+to switch the order around.
+<p>Of course, more realistically, we will need features such as gender
+and number in order to produce the right words in each language. For instance,
+whereas in English we have only one lexical form for the definite article,
+whether it is singular, plural, feminine or masculine, in Spanish we have
+four different lexical items covering all these forms.
+<h3>
+3.5&nbsp; Immediate Evaluation</h3>
+Commands get processed, as we saw, after their translation into formulas
+from their natural language expression. These formulas are conjunctions
+of actions expressed as predicates, whose arguments are constants representing
+objects, people, places, etc. These constants are produced by evaluating
+noun phrases on the fly during the parse. In other words, instead of generating
+a formula to represent a noun phrase, its components will be evaluated
+right away to generate a constant satisfying the noun phrase's description.
+For instance, if the command sequence is that of the two last sentences
+shown in table 1, parsing of ``the car that john crafted'' will directly
+produce ``car'' (the constant representing the entity that john crafted)
+rather than a descriptive formula such as ``<tt>crafted(john,X), is_a(X,car)</tt>''.
+<h3>
+3.6&nbsp; Treatment of nouns</h3>
+Because our system translates a noun into a constant with same name, our
+treatment of nouns can be viewed as similar to that of proper names. As
+mentioned earlier, internally a distinction will be made between cars crafted
+by different users or by the same user in different rooms, but when the
+same user wants to refer to two distinct noun referents in the same room,
+a different noun name must be used for each, e.g. ``car1'' and ``car2''.
+Thus ambiguity is dealt with automatically without needing to resort to
+the explicit construction of internal unique identifiers for each object
+as is the case in many other systems. This makes object referencing very
+direct and allows us to proceed to the immediate evaluation of noun phrases
+described in the previous section. The resulting formulas are therefore
+simpler.
+<p>Adjectives can also be recognized by context, as explained earlier,
+but will generate a predicate (e.g., red(X) from the adjective ``red'')
+rather than a constant. This predicate, as we have seen, will evaluate
+immediately rather than being inserted into the formula being constructed.
+<h2>
+4&nbsp; Related work</h2>
+A survey of logic programming approaches to web applications in terms of
+the usual classification into client-based systems, server-side systems,
+and peer-to-peer systems has been provided in.
+<br>Client-side systems&nbsp; offer more sophisticated user interfaces
+than server-side ones, and avoid networking programs that can affect server-side
+applications. They include HTML extensions to incorporate Prolog code,
+support libraries for web applications, Java integration with Prolog, logic-based
+web querying languages. Some server-side systems use libraries which enable
+Prolog programs to process information from CGI input and generate suitable
+replies.Others use sockets for communication between the invoked CGI interface
+scripts and the task process or a higher-level communication layer based
+on active modules (PiLLoW/CIAO). The main problems include the possibility
+of network load failures and of server overload, how to support multiple
+queries on a shared resource, and how to deal with lengthy browser interactions.
+A logic-programming related difficulty is how to deal with backtracking
+to a previous stage in the user interaction. Still other server-side systems
+completely replace the traditional web server by software which combines
+the functionality of a server with the particular task (e.g. the ECLiPse
+HTTP server library).
+<p>Peer-to-peer systems&nbsp; use other abstractions (message passing or
+blackboards) but retain the Internet as their underlying communication
+layer. This allows them to implement multi-agent systems, where all participants
+must communicate on equal terms, bypassing the intrinsic inequality of
+the client/server model. Our present work fits within this category.
+<p>On the other hand applications of MOO technology usually combined with
+VRML navigation are spreading quite fast. Among them, some of the most
+impressive are:
+<ul>
+<li>
+Sony's Cyber Passage, <tt>http://vs.sony.co.jp/VS-E/vstop.html</tt>,</li>
+
+<li>
+Black Sun's CyberGate, <tt>http://www2.blacksun.com/beta/c-gate</tt>,</li>
+
+<li>
+Netscape's CoolTalk+Live3D/CosmoPlayer, <tt>http://home.netscape.com</tt>,</li>
+
+<li>
+Worlds Inc.'s WorldChat, <tt>http://www.worlds.net</tt>,</li>
+
+<li>
+Intel's Moondo, <tt>http://www.intel.com/iaweb/moondo</tt>,</li>
+
+<li>
+SenseMedia's The Sprawl, <tt>http://sensemedia.net/sprawl</tt>.</li>
+</ul>
+Moreover, other declarative languages are starting to be used for WWW applications.
+The Carnegie Mellon FoxNET project implements a full featured Web server.
+Microsoft's Active VRML proposal promises a declarative (purely functional)
+description of 3D movement and behavior.
+<p>We have not yet found any MUD/MOO environments that handle NL processing.
+Other MUD/MOO environments fall into two general categories. Environments
+such as <i>Moondo</i> by Intel <i>CyberGate</i> by BlackSun&nbsp; and <i>Cyber
+Passage</i> by Sony fall into the category of point and click graphical
+environments. These completely avoid the need for NL processing as the
+only text involved seems to be that for chatting with other avatars. All
+movement and actions are completed with mouse point and click actions.
+The second category, in which environments such as MediaMOO and the Avalon
+MUD&nbsp; fall into, are text-based systems. These systems lack NL processing
+and focus on the use of pattern matching techniques to gather information.
+<p>Further, there is little work being done that is specific to the advantages
+gained by connecting MUDs/MOOs to the World Wide Web using logic programming
+such as the use of Prolog. As such, objects in LogiMOO are represented
+as hyper-links (URLs) towards their owners' home pages where their native
+representation actually resides in various formats (HTML, VRML, GIF, JPEG,
+etc.). At the same time, logic programming adds deductive database facilities
+in a uniform framework, hypothetical reasoning tools (through Assumption
+Grammars), and logic programming data and code use the same representation
+which makes meta-programming easy.
+<p>Virtual Worlds technologies are becoming part of standard setting applications
+like Netscape Communicator or Internet Explorer. Most of them concentrate
+on the interaction metaphor and/or visualization without a principled approach
+to the underlying coordination logic.
+<p>Compared to other currently known MUD/MOO environments, this interface
+bridges the gap between those that are graphical based and those that are
+pattern matching based. By filling the gap, we are able to provide the
+users with a natural form of textual interaction on which graphical environments
+can still be built.
+<p>Although the current interaction is controlled completely through the
+natural language interface, this does restrict efficiency of maneuvering
+an avatar through the virtual worlds.
+<br>&nbsp;
+<h2>
+5&nbsp; Future work</h2>
+A Java based implementation, using a minimal set of logic programming components
+(unification, associative search) is on its way. It will be integrated
+in the existing LogiMOO framework on the server side. It holds promise
+for smooth cooperation with existing Java class hierarchies as well as
+various BinProlog based LogiMOO components.
+<p>This reimplementation of LogiMOO uses Jinni, a new, lightweight, pure
+logic programming language, intended to be used as a flexible scripting
+tool for gluing together knowledge processing components and Java objects
+in networked client/server applications and thin client environments. By
+supporting multiple threads, control mobility and inference processing,
+Jinni is well suited for quick prototyping of intelligent mobile agent
+programs.
+<p>It allows bidirectional communication with the existing LogiMOO framework,
+allowing creation of combined Java/Prolog mobile-agent programs. In particular,
+Java applets can be used as front-end in browsers instead of the more resource
+consuming CGIs LogiMOO is currently based on. It holds promise for smooth
+cooperation with existing Java class hierarchies as well as various BinProlog
+based LogiMOO components.
+<p>Intelligence and flexible metaprogramming on the logic programming side
+combined with visualization and WWW programming abilities on the Java side
+will allow easy component integration in various concrete containers.
+<p>The LogiMOO system is currently being used in teaching to introduce
+basic concepts of distributed programming and as a testbed for LogiMOO
+based virtual communities. Future directions are to include LogiMOO as
+a tool for virtual tele-education where distance education students and
+instructors may use LogiMOO as a teaching/learning environment.
+<p>With respect to the natural language processing component, the next
+logical step is the use speech recognition in order to interact with LogiMOO
+and other interoperable components running under Netscape as, for instance,
+VRML plugins. As we proceed with Jinni's interfacing with Microsoft Agent,
+LogiMOO will benefit from spoken input/output via the underlying implementation
+layer.
+<p>There is presently a growing interest in enhancing the web's role as
+a universal repository of information by adding computational content to
+it. A common example of <i>active pages</i> have form based submission
+mechanisms (the user invokes programs on remote hosts by submitting information
+via a form document).
+<p>The web itself is evolving into a stateful new model consisting of a
+set of connected MOOs. Under this model, our present methodologies for
+Prolog-based natural language interaction within a LogiMOO world can be
+extended for controlling the web itself through natural language.
+<h2>
+6&nbsp; Conclusion</h2>
+We have shown that Prolog with appropriate coordination language extensions
+is a practical tool for virtual world simulation. A synergy between MOOs,
+Linda-style coordination and Prolog's powerful associative search and dynamic
+object creation facilities could be expected. Multi-BinProlog's threads
+and virtual blackboards make this synergy possible. A logic programming
+approach to MOO programming has the advantage of having all the right tools
+within a unified environment. Embedding in Netscape ensures implicit platform
+independence of our server and seamless cooperation with present and future
+third party Netscape tools.
+<p>We have also presented a natural language interface to LogiMOO which
+takes a controlled form of English and translates it into LogiMOO kernel
+predicates which are executed as actions in the virtual environment. Pronominal
+references in multisentential input are allowed. Extensibility within the
+same language is achieved by inferring new nouns and adjectives from their
+context in the sentences, and by a dialogue with the user that allows new
+verbs and their corresponding LogiMOO actions to be described in a user-friendly
+way. Extensibility into different natural languages is obtained not through
+the usual machine translation approach, but by abstracting a core set of
+language independent rules from our English parser and then adding a language
+specific lexicon (currently available for English, French, Spanish) to
+complete the grammar definition. A simple change of one lexicon module
+into another effects the language change invisibly, so that users across
+the world can type in their interactions in their own language, these are
+recorded in a neutral but invisible form, from which any retrieval continues
+to respect the language of the caller.
+<p>
+<hr WIDTH="100%">
+<br>An extended version of this article has been published as:
+<p>@article{lm,
+<br>&nbsp; author = "Tarau, Paul and De Boschere, Koen and Dahl, Veronica
+and Rochefort, Stephen",
+<br>&nbsp; title = {{LogiMOO: an Extensible Multi-User Virtual World with
+Natural Language Control}},
+<br>&nbsp; year = 1999,
+<br>&nbsp; journal = {Journal of Logic Programming},
+<br>&nbsp; volume = 38,
+<br>&nbsp; number = 3,
+<br>&nbsp; month = mar,
+<br>&nbsp; pages = "331--353"
+<br>}
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

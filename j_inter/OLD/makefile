@@ -1,0 +1,37 @@
+# makefile for the BinProlog/Java interface: BinProlog calling Java directly
+
+PROJ=bpj
+
+JAVA_HOME=d:/jdk1.4
+JAVA_LIB=$(JAVA_HOME)/lib/jvm.lib 
+
+# chose this for redistributable runtime
+#BP_LIB=:../lib/bpr.lib 
+BP_LIB=../lib/bp.lib
+ 
+#cl -I<where jni.h is> -MT invoke.c -link <where javai.lib is>\javai.lib
+CC=cl -DVCC=1 -O2 -MT -Ot -Oy -G5 -Gd -W2 -nologo -DWIN32 -DNDEBUG -D_WINDOWS
+#CC=cl -MT 
+
+it:	$(PROJ).exe
+
+$(PROJ).exe: $(PROJ).obj $(PROJ).class
+	$(CC) $(PROJ).obj -Fe$(PROJ).exe -link -DEFAULTLIB:$(JAVA_LIB) -DEFAULTLIB:$(BP_LIB) /NODEFAULTLIB:LIBC -DEFAULTLIB:wsock32 -DEFAULTLIB:advapi32
+
+$(PROJ).obj: $(PROJ).c
+	$(CC) -c $(PROJ).c -I../lib -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/win32
+
+$(PROJ).class: $(PROJ).java
+	javac -O $(PROJ).java
+
+realclean clean:
+	rm -f *.obj *.exp *.lib *.exe *.class
+
+gz save zip bak:	clean
+	rm -r -f bak
+	mkdir bak
+	cp *.* makefile bak
+	mv bak $(PROJ)$(VER)
+	zip -r $(PROJ)$(VER) $(PROJ)$(VER)
+	mv -f $(PROJ)$(VER).zip ..
+	rm -r -f $(PROJ)$(VER)

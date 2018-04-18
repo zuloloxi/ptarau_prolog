@@ -1,0 +1,39 @@
+ranking_file('/paul/wordnet/rada/pl_files/br-a01.pl',op = tfile2info,maxsyns = 64,rel = xlinked)
+total_sentences = 90
+total_words_in_unprocessed_sentences_count = 1983
+total_words_in_processed_sentences_count = 313
+total_tagged_unique_words = 131
+total_synset_vertices = 1028
+'edges after processing_co_occurences' = 0
+proc = xlinked(_25690,_25687)
+'before extending with incoming gloss links to nouns in the text' = 855
+total_edges = 1189
+starting_page_rank
+finished_page_rank([size = 1028,pr_steps = 24,comps = 606,giant = 0,gsize = 98])
+
+processing(syns = 64,rel = xlinked,co_occ(verb,verb))
+
+'highest ranked words:'
+[make]
+[act]
+[get]
+[go]
+[give]
+[hold]
+[take]
+[consider]
+
+'highest ranked concepts:'
+
+'highest ranked verbs:'
+90463 : [give]
+82930 : [choose]
+83002 : [see]
+91068 : [supply]
+84411 : [record]
+84456 : [state]
+87742 : [cause]
+87730 : [effect]
+result(xlinked,match_perc = 40.36697247706422,total = 218,match = 88,mismatch = 130)
+'---------------------------------------------------------------------'
+ranking_file('/paul/wordnet/rada/pl_files/br-a02.pl',op = tfile2info,maxsyns = 64,rel = xlinked)

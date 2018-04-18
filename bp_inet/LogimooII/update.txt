@@ -1,0 +1,9 @@
+echo DEFAULT PLACES FROM WHERE COMPONENTS COME
+echo THIS PACKAGE IS SELF CONTAINED, COMPONENTS
+echo ORIGINATING ELSEWHERE REQUIRE MINIMAL CHANGES
+echo copy \bin\bp.exe
+echo copy \bin\bpr.exe
+echo copy ..\server\http_server.pl
+echo copy ..\server\ssi_lib.pl
+echo copy ..\library\http_tools.pl
+echo EDIT some of the :-[...] accordingly when using the components directly

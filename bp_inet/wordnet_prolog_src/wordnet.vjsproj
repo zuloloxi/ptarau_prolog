@@ -1,0 +1,179 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>wordnet_NET</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>Class1</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ProjectGuid>{AD102C70-7E0B-11D3-A78C-0090274242A7}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BaseAddress>268435456</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>WIN32, DEBUG</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>2</WarningLevel>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BaseAddress>268435456</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>WIN32</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>2</WarningLevel>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="vjslib">
+      <Name>vjslib</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bakgo.bat" />
+    <None Include="bbcomp.bat" />
+    <None Include="bbuild.bat" />
+    <None Include="bconvert.bat" />
+    <None Include="bigbak.bat" />
+    <None Include="bigbp.bat" />
+    <None Include="bjcomp.bat" />
+    <None Include="bjorig.bat" />
+    <None Include="borig.bat" />
+    <None Include="bpco.wam" />
+    <None Include="brefact.bat" />
+    <None Include="breg.bat" />
+    <None Include="brun.bat" />
+    <None Include="btransform.bat" />
+    <None Include="clean.bat" />
+    <None Include="compile.bat" />
+    <None Include="dbak.bat" />
+    <None Include="jclient.bat" />
+    <None Include="jreg.bat" />
+    <None Include="jrun.bat" />
+    <None Include="jser.bat" />
+    <None Include="jtest.bat" />
+    <None Include="jwn\tg.pl" />
+    <None Include="jwn_compile.bat" />
+    <None Include="jwn_run.bat" />
+    <None Include="jwrun.bat" />
+    <None Include="makeall.bat" />
+    <None Include="makevista.bat" />
+    <None Include="realclean.bat" />
+    <None Include="restore.bat" />
+    <None Include="run.bat" />
+    <None Include="setpath.bat" />
+    <None Include="update.bat" />
+    <None Include="wbak.bat" />
+    <None Include="wcheck.bat" />
+    <None Include="wn.bat" />
+    <None Include="wx_all.pl" />
+    <None Include="wx_alpha.pl" />
+    <None Include="wx_basic.pl" />
+    <None Include="wx_build.pl" />
+    <None Include="wx_chat.pl" />
+    <None Include="wx_convert.pl" />
+    <None Include="wx_data.pl" />
+    <None Include="wx_dis.pl" />
+    <None Include="wx_emotions.pl" />
+    <None Include="wx_erules.pl" />
+    <None Include="wx_frame.pl" />
+    <None Include="wx_games.pl" />
+    <None Include="wx_gbuild.pl" />
+    <None Include="wx_goals.pl" />
+    <None Include="wx_gram.pl" />
+    <None Include="wx_graph.pl" />
+    <None Include="wx_idioms.pl" />
+    <None Include="wx_jcomp.pl" />
+    <None Include="wx_jreg.pl" />
+    <None Include="wx_jtop.pl" />
+    <None Include="wx_keywords.pl" />
+    <None Include="wx_learn.pl" />
+    <None Include="wx_lib.pl" />
+    <None Include="wx_meta.pl" />
+    <None Include="wx_natlang.pl" />
+    <None Include="wx_om.pl" />
+    <None Include="wx_omqa.pl" />
+    <None Include="wx_ops_no.pl" />
+    <None Include="wx_ops_yes.pl" />
+    <None Include="wx_orig.pl" />
+    <None Include="wx_past.pl" />
+    <None Include="wx_personal.pl" />
+    <None Include="wx_r.pl" />
+    <None Include="wx_rank.pl" />
+    <None Include="wx_reactive.pl" />
+    <None Include="wx_refact.pl" />
+    <None Include="wx_run.pl" />
+    <None Include="wx_sdata.pl" />
+    <None Include="wx_search.pl" />
+    <None Include="wx_short.pl" />
+    <None Include="wx_state.pl" />
+    <None Include="wx_story.pl" />
+    <None Include="wx_sum.pl" />
+    <None Include="wx_tests.pl" />
+    <None Include="wx_top.pl" />
+    <None Include="wx_transform.pl" />
+    <None Include="wx_view.pl" />
+    <None Include="wx_xml.pl" />
+    <Content Include="chat.html" />
+    <Content Include="test.txt" />
+    <Content Include="todo.txt" />
+    <Compile Include="jnet\WordGraph.java">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jnet\WordPhrase.java">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jwn\DeTagger.java">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jwn\TGAdaptor.java">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualJSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

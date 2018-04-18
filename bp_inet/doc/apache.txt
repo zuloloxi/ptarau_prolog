@@ -1,0 +1,37 @@
+main:-header,write(hello),nl.
+
+header:-
+  write('content-type: text/html'),nl,nl.
+
+% add to the end of your Apcahe httpd.conf file
+% something like the following
+/*
+# in case you have another server on port 80
+Port 81 
+....
+
+##############################################
+# ADDITION TO the end of APACHE 2.0 httpd.conf
+# to SUPPORT BinProlog CGI scripts
+##############################################
+
+Alias /cgi "C:/tarau/BinProlog/bp_inet/cgi"
+   
+<Directory "C:/tarau/BinProlog/bp_inet/cgi">
+    Options Indexes FollowSymLinks MultiViews IncludesNoExec
+    AddOutputFilter Includes html
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+ScriptAlias /bin/ "C:/tarau/BinProlog/bp_inet/bin/"
+
+<Directory "C:/tarau/BinProlog/bp_inet/bin/">
+    AllowOverride None
+    Options None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+*/

@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>Prolog Server Agent Output</title>
+  </head>
+  <body language="Javascript" onLoad="OnLoad()" text="#000000" bgcolor="#ffffff" background="../images/wall.jpg">
+    <OBJECT id="AgentControl" codeBase="#VERSION=2,0,0,0" height="0" width="0" classid="CLSID:D45FD31B-5C6E-11D1-9EC1-00C04FD7081F">
+    </OBJECT>
+    <OBJECT ID="TruVoice" width="0" height="0" CLASSID="CLSID:B8F2846E-CE36-11D0-AC83-00C04FD97575" CODEBASE="#VERSION=6,0,0,0">
+    </OBJECT>
+    <SCRIPT language="Javascript">
+
+var aAgent;
+var qAgent;
+var res;
+
+function initAgent(name,url) {
+  AgentControl.Characters.Load(name,url);
+	name = AgentControl.Characters.Character(name);
+	name.LanguageID = 0x0409;
+	return name;
+}
+
+function initOne(name,ag) {
+
+  url=ag+".acs";
+  name=initAgent(name,url);
+  if(null!=name) return name;
+
+  url="http://agent.microsoft.com//agent2//chars//"+ag+"//"+ag+".acf";
+  //i.e. http://agent.microsoft.com/agent2/chars/merlin/merlin.acf
+  name=initAgent(name,url);
+
+  return name;
+}
+
+function initQ() {
+  qAgent=initOne("qAgent","Peedy");
+}
+
+function initA() {
+  aAgent=initOne("aAgent","Merlin");
+}
+
+function agentSpeak(agent,message) {
+  //if(null!=res) Wait(res);
+  agent.Get("state", "Showing, Speaking");
+	agent.Get("animation", "Greet, GreetReturn");
+	agent.Show();
+	agent.Get("state", "Hiding");
+	agent.Play("Greet");
+	res=agent.Speak(message);
+	agent.Hide();
+}
+
+function OnLoad() {
+	AgentControl.Connected = true;	//  necessary for IE3
+  initQ();
+  initA();
+  	
+	agentSpeak(qAgent,"{{?spoken_query}}");	
+	aAgent.Wait(res);
+ 	agentSpeak(aAgent,"{{?spoken_answer}}"); 	
+	}
+    </SCRIPT>
+    <p>
+      <font color="#000099"><b>{{?login}}:&nbsp;</b>{{?query}}</font>
+      <br>
+      <b>agent:</b>&nbsp;{{?answer}}
+    </p>
+    <hr>
+    <b>History Window</b>
+    <pre>
+{{?history}}
+</pre>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+CALL jwn_compile.bat
+java -Xmx1024M -classpath ".;prolog.jar;prolog3d.jar;jwn/TGGraphLayout.jar" prolog.kernel.Main C:/paul/wordnet/wruntime/wx_run.jc mcompile(wx_jtop) println(prolog_server) %1 %2 %3 %4 %5 %6 %7 %8

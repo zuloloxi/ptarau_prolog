@@ -1,0 +1,169 @@
+#VRML V2.0 utf8 
+
+PROTO 
+aShape 
+[ 
+  exposedField SFColor 
+  color 1 0 0 , 
+  exposedField MFString 
+  texture [] , 
+  exposedField SFNode 
+  geometry 
+  Sphere {} 
+] { 
+  Shape { 
+    geometry IS geometry appearance 
+    Appearance { material 
+      Material { 
+        diffuseColor IS color 
+      } texture 
+      ImageTexture { 
+        url IS texture 
+      } 
+    } 
+  } 
+} 
+926+2
+6494+2
+
+Group { 
+  children [ 
+    DEF saucer 
+    Transform { 
+      translation -2 1 1 
+      scale 0.6 0.2 0.6 
+      rotation 0.5 0.5 0 1.5 
+      children [ 
+        aShape { 
+          geometry 
+          Sphere {} 
+          color 0.488281 0.914063 0.214844 
+        } , 
+        aShape { 
+          geometry 
+          Cone {} 
+          color 0 0 1 
+        } 
+      ] 
+    } , , 
+    Transform { 
+      translation 1 0 0 
+      scale 1 1 1 
+      rotation 0 1 0 0 
+      children [ 
+        Transform { 
+          translation 0 0 0 
+          scale 0.5 0.5 0.5 
+          rotation 0 1 0 0 
+          children [ 
+            aShape { 
+              geometry 
+              Sphere {} 
+              color 1 1 0 
+            } 
+          ] 
+        } , 
+        Transform { 
+          translation 0 -0.5 0 
+          scale 0.6 0.8 0.6 
+          rotation 0 1 0 0 
+          children [ 
+            aShape { 
+              geometry 
+              Cone {} 
+              color 1 1 0 
+            } 
+          ] 
+        } 
+      ] 
+    } , 
+    DEF boy 
+    Transform { 
+      translation -1 0 0 
+      scale 1 1 1 
+      rotation 0 1 0 0 
+      children [ 
+        Transform { 
+          translation 0 0 0 
+          scale 0.5 0.5 0.5 
+          rotation 0 1 0 0 
+          children [ 
+            aShape { 
+              geometry 
+              Sphere {} 
+              color 0.3 0.01 0.01 
+            } 
+          ] 
+        } , 
+        Transform { 
+          translation 0 -0.8 0 
+          scale 0.3 0.5 0.3 
+          rotation 0 1 0 0 
+          children [ 
+            aShape { 
+              geometry 
+              Cylinder {} 
+              color 0 1 0 
+            } 
+          ] 
+        } 
+      ] 
+    } , 
+    Transform { 
+      translation -3 -2 0 
+      scale 0.8 0.4 0.4 
+      rotation 0 1 0 1.5 
+      children [ , 
+        Transform { 
+          translation 1 0 0 
+          scale 1 1 1 
+          rotation 0 1 0 0 
+          children [ 
+            Transform { 
+              translation 0 0 0 
+              scale 0.5 0.5 0.5 
+              rotation 0 1 0 0 
+              children [ 
+                aShape { 
+                  geometry 
+                  Sphere {} 
+                  color 1 1 0 
+                } 
+              ] 
+            } , 
+            Transform { 
+              translation 0 -0.5 0 
+              scale 0.6 0.8 0.6 
+              rotation 0 1 0 0 
+              children [ 
+                aShape { 
+                  geometry 
+                  Cone {} 
+                  color 1 1 0 
+                } 
+              ] 
+            } 
+          ] 
+        } 
+      ] 
+    } , 
+    DEF t 
+    TimeSensor { loop TRUE cycleInterval 8 
+    } , 
+    DEF p 
+    PositionInterpolator { 
+      key [ 0 , 0.25 , 0.5 , 0.75 , 1 
+      ] 
+      keyValue [ 0 , 2 , 1 , -1 , 1 , 0 , 2 , 2.5 , 1 , -2 , 0 , -1 , 0 , 2 , 1 
+      ] 
+    } , 
+    DEF r 
+    OrientationInterpolator { 
+      key [ 0 , 0.5 , 1 
+      ] 
+      keyValue [ 0.5 , 0.5 , 0 , 1.5 , 0 , 1 , 0 , -1 , 0.5 , 0.5 , 0 , 1.5 
+      ] 
+    } 
+  ] 
+} 
+

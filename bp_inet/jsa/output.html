@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Jinni 2003 Virtual Server Registry</title></head>
+  <body>
+    <h3>Instant Web Services with the Jinni Virtual Server Registry. How it works?</h3>
+    <pre>Download the Java or .NET based <STRONG>Jinni 2003 </STRONG>evaluation copy from 
+<A href="http://www.binnetcorp.com/Jinni">http://www.binnetcorp.com/Jinni</A> and start it on your computer (which
+can sit happily behind a firewall, NAT etc.) with:
+
+    <b>jinni.bat jinni_tunnel</b> 
+
+This will start the Jinni HTTP server in your local directory and open
+a <STRONG>tunnel</STRONG> from it to a <STRONG>Web address</STRONG> dynamically allocated to you. The tunnel 
+will allow other people to run Jinni applets or see Web pages located on<STRONG>  
+your computer,</STRONG> even if it is <EM>behind a firewall or NAT</EM>!<BR> 
+The Web address looks like this: 
+
+<b>http://logic.csci.unt.edu:40001/...your-html-file...(defaults to index.html)</b>
+
+To reserve a tunnel for <EM><STRONG>another server</STRONG></EM> on your local machine (let's say an 
+Apache Web server that you have on your localhost port 80), choose a 4 digit 
+<STRONG>tunnel number </STRONG>and a <STRONG>password</STRONG>, then click <b>submit</b>. The agent will remember 
+you and assign you a lease for a <STRONG>Jinni Virtual Server Tunnel Number</STRONG>, which you 
+can renew as many times as you wish by using the same password. <b>Please write 
+down the returned TUNNEL NUMBER!</b> It is <STRONG>YOURS</STRONG> only, uniquely associated with
+your password. Then, start Jinni with: 
+
+<b>jinni.bat tunnel_to(TunnelNumber,LocalServerPort)</b> 
+
+It will map your <STRONG>local server</STRONG> to a Jinni Web Service. Assuming that you have a
+Web Server on your laptop or home PC, on default HTTP port 80 and we have assigned
+you port 1234, your virtual server will look like a Web site up and running at: 
+
+<STRONG>   http://logic.csci.unt.edu:1234</STRONG> </pre>
+    <PRE>If you do not have a Web server on your machine, you can start the Jinni Web server  
+on a given port and a given root directory by typing: </PRE>
+    <PRE>   <STRONG>jinni.bat run_http_server(Port,Root)</STRONG></PRE>
+    <PRE>Besides using this form, you can also reserve a permanent tunnel number directly, with</PRE>
+    <PRE></pre>
+    <PRE></PRE><PRE><B>jinni.bat reserve_tunnel(TunnelNumber,Password,Description)</B></PRE> <PRE>Enjoy, 
+
+Paul Tarau</PRE> 
+    <PRE>&nbsp;</PRE>
+    </body>
+</html>

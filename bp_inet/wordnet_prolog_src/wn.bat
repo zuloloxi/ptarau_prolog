@@ -1,0 +1,1 @@
+CALL "D:\Program Files\WordNet\1.7.1\bin\wn.exe" %1 %2 %3 %4 %5 %6

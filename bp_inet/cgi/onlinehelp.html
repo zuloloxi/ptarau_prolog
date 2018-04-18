@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>BinProlog CGI form script</title>
+  </head>
+  <body text="#FF0000" bgcolor="#FFFFCC">
+    <form method="post" target="history" action="../bin/bp.exe?../cgi/onlinehelp.pro">
+      <b>Your name:</b> <input name="name" type="text" size="20" value="Guest"> <b>E-mail:</b>
+      <input name="email" type="text" size="20" value="a@b.c">
+      <p>
+        <b>Help/Info on:</b> <input align="top" name="help" size="40" value="findall">&nbsp;
+        <input align="bottom" type="submit" value="Send">
+      </p>
+      An empty help field will generate a help on all BinProlog documented builtin 
+      operations.
+    </form>
+  </body>
+</html>

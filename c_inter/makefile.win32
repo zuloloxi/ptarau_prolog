@@ -1,0 +1,49 @@
+PROJ=c_binpro
+CINTERF=c
+CC=cl -DVCC=1 -I$(SRC) -O2 -Ot -Oy -G6 -Gd -W2 -DWIN32 -DNDEBUG -D_WINDOWS -nologo
+SRC="C:\a18\prolog4\Paul_Tarau\BinProlog\src"
+BP_FILES=$(SRC)/sym.c $(SRC)/load.c $(SRC)/engine.c $(SRC)/builtins.c \
+$(SRC)/dict.c $(SRC)/io.c $(SRC)/float.c $(SRC)/debug.c \
+$(SRC)/socket.c $(SRC)/ru.c $(SRC)/gc.c $(SRC)/main.c $(SRC)/wam.c
+
+BINPROLOG=bp.exe
+
+it: $(PROJ).exe
+
+# --------------------- do not edit below this line---------------------#
+
+#------------------- Standalone C-ified project -------------------------#
+# This generates a C-file from the Prolog file in PROJ file and links it to
+# the BinProlog `library' (a relocatable object file usually c_binpro.dll)
+# combined with the C-ified emulator (usually ../src/wam.obj) and your
+# own C-code in files c.c + c.h and your Prolog code using the interface
+# in file c.pl 
+
+$(PROJ).exe:	$(PROJ).obj $(CINTERF).obj wam.obj makefile
+	type README.txt
+	$(CC) -o $(PROJ).exe *.obj  -link /DEFAULTLIB:wsock32 /DEFAULTLIB:advapi32
+	@echo "TYPE c_bpinpro and then ?-go. at the Prolog prompt"
+
+$(PROJ).obj:	$(PROJ).c
+	$(CC) -c $(PROJ).c
+
+$(PROJ).h $(PROJ).c:	$(PROJ).pro $(CINTERF).pl
+#	rm -f $(PROJ).c $(PROJ).h
+	bp "(cmake($(PROJ)),halt) "
+
+$(CINTERF).obj:	$(CINTERF).c $(CINTERF).h
+	$(CC) -c $(CINTERF).c
+
+wam.obj:
+	$(CC) -c -I$(SRC) $(BP_FILES)
+
+save:
+#	rm -f -r bak
+	mkdir bak
+	cp $(PROJ).pro c.c c.h c.pl README makefile bak
+
+clean realclean:	oclean
+#	rm -f *.obj *.lib *.exp $(PROJ).exe
+
+oclean:
+#	rm -f $(PROJ).obj $(PROJ).exp $(PROJ).lib $(PROJ).dll $(PROJ).c $(PROJ).h

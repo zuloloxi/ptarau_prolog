@@ -1,0 +1,31 @@
+td.textSize { font-family:  Arial,sans-serif,Helvetica; color:#003366; }
+td.textCopyr { font: 7.5pt Arial,sans-serif,Helvetica; color:#003366; }
+
+.textTitle { 
+    font: 12pt/13.5pt Verdana,Tahoma,Helvetica; 
+	color:#993300; font-weight: bold; 
+	letter-spacing : -1px;
+	TEXT-DECORATION: underline;	
+}
+	
+A
+{
+    COLOR: #009999;
+    TEXT-DECORATION: underline
+}
+A:visited
+{
+    COLOR: #006666;
+    TEXT-DECORATION: underline
+}
+A:hover
+{
+    COLOR: #CC6600;
+    TEXT-DECORATION: underline
+}
+A:active
+{
+    COLOR: #CC9900;
+    TEXT-DECORATION: underline
+}
+

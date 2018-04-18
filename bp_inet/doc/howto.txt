@@ -1,0 +1,23 @@
+##############################################
+# ADDITION TO the end of APACHE 2.0 httpd.conf
+# to SUPPORT BinProlog CGI scripts
+##############################################
+
+Alias /cgi "C:/tarau/BinProlog/bp_inet/cgi"
+   
+<Directory "C:/tarau/BinProlog/bp_inet/cgi">
+    Options Indexes FollowSymLinks MultiViews IncludesNoExec
+    AddOutputFilter Includes html
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+ScriptAlias /bin/ "C:/tarau/BinProlog/bp_inet/bin/"
+
+<Directory "C:/tarau/BinProlog/bp_inet/bin/">
+    AllowOverride None
+    Options None
+    Order allow,deny
+    Allow from all
+</Directory>
