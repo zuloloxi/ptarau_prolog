@@ -1,0 +1,64 @@
+rem ru "and(cboot,halt)"
+rem generate binpro.c,binpro.h and wam.h
+C:\A17\prolog\ptarau_prolog\src>ru "and(cboot,halt)" >ru_and_cboot.txt
+
+BinProlog, #12.00 Copyright (C) Paul Tarau 1992-2012.
+Open-sourced under GPL v.3 licence at
+http://www.gnu.org/licenses/gpl-3.0.txt.
+(with heap GC enabled) (with Windows threads) 32 bits
+Detected hostname: undetected (type bp -p10 to detect host)
+Start loading system code from <and(cboot,halt)>.
+Finished loading system code.
+
+Prolog execution halted(0). CPU time = 1.435s
+
+rem traces executions
+
+compiling(to(c),binpro.pro,...)
+compile_time(0)
+total_compile_time(16)
+binpro = time(16)
+compiling(to(c),wam.pro,...)
+begin(including(run.pro),in(wam.pro))
+begin(including(oper.pl),in(run.pro))
+end(including(oper.pl),in(run.pro))
+begin(including(builtins.pl),in(run.pro))
+end(including(builtins.pl),in(run.pro))
+begin(including(init.pl),in(run.pro))
+end(including(init.pl),in(run.pro))
+begin(including(lib.pl),in(run.pro))
+end(including(lib.pl),in(run.pro))
+begin(including(xdb.pl),in(run.pro))
+end(including(xdb.pl),in(run.pro))
+begin(including(hmap.pl),in(run.pro))
+end(including(hmap.pl),in(run.pro))
+begin(including(tstore.pl),in(run.pro))
+end(including(tstore.pl),in(run.pro))
+begin(including(maps.pl),in(run.pro))
+end(including(maps.pl),in(run.pro))
+begin(including(dcg.pl),in(run.pro))
+end(including(dcg.pl),in(run.pro))
+begin(including(read.pl),in(run.pro))
+end(including(read.pl),in(run.pro))
+begin(including(write.pl),in(run.pro))
+end(including(write.pl),in(run.pro))
+begin(including(top.pl),in(run.pro))
+end(including(top.pl),in(run.pro))
+begin(including(extra.pl),in(run.pro))
+end(including(extra.pl),in(run.pro))
+begin(including(net.pl),in(run.pro))
+end(including(net.pl),in(run.pro))
+begin(including(cserver.pl),in(run.pro))
+end(including(cserver.pl),in(run.pro))
+end(including(run.pro),in(wam.pro))
+begin(including(bin.pl),in(wam.pro))
+end(including(bin.pl),in(wam.pro))
+begin(including(co.pl),in(wam.pro))
+end(including(co.pl),in(wam.pro))
+begin(including(c_comp.pl),in(wam.pro))
+end(including(c_comp.pl),in(wam.pro))
+begin(including(c_instr.pl),in(wam.pro))
+end(including(c_instr.pl),in(wam.pro))
+compile_time(1342)
+total_compile_time(1357)
+wam = time(1357)

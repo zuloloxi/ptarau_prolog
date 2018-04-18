@@ -1,0 +1,57 @@
+rem build brev exe file
+rem generate files brev.h, brev.c 
+C:\A17\prolog\ptarau_prolog\pl2c>winmake.bat
+
+C:\A17\prolog\ptarau_prolog\pl2c>CALL pro2exe.bat brev
+
+C:\A17\prolog\ptarau_prolog\pl2c>rem change dir to pl2c folder
+
+C:\A17\prolog\ptarau_prolog\pl2c>mkdir brevcod
+
+C:\A17\prolog\ptarau_prolog\pl2c>..\bin\bp qmake(brev),halt
+Le chemin d’accès spécifié est introuvable.
+
+C:\A17\prolog\ptarau_prolog\pl2c>cl.exe -Febrev.exe -I..\lib brev.c ..\lib\c.c /FAcs /Fa./brevcod/ -DTHREADS=1 -DVCC=1 -MT -GF -TC -W2 -O2x -DWIN32 -DNDEBUG -D_
+CONSOLE -D_WINDOWS -DMBCS -nologo -link /NODEFAULTLIB:LIBC /DEFAULTLIB:wsock32 /DEFAULTLIB:advapi32 /DEFAULTLIB:..\lib\bpr.lib /DEFAULTLIB:advapi32 /DYNAMICBASE
+:NO /FIXED /NXCOMPAT /MACHINE:X86 /MAP
+brev.c
+c1 : fatal error C1083: Cannot open source file: 'brev.c': No such file or directory
+c.c
+Generating Code...
+
+C:\A17\prolog\ptarau_prolog\pl2c>
+C:\A17\prolog\ptarau_prolog\pl2c>winmake.bat
+
+C:\A17\prolog\ptarau_prolog\pl2c>CALL pro2exe.bat brev
+
+C:\A17\prolog\ptarau_prolog\pl2c>rem change dir to pl2c folder
+
+C:\A17\prolog\ptarau_prolog\pl2c>mkdir brevcod
+Un sous-répertoire ou un fichier brevcod existe déjà.
+
+C:\A17\prolog\ptarau_prolog\pl2c>..\src\bp qmake(brev),halt
+
+BinProlog, #12.00 Copyright (C) Paul Tarau 1992-2012.
+Open-sourced under GPL v.3 licence at
+http://www.gnu.org/licenses/gpl-3.0.txt.
+(C-ified standalone)
+(with heap GC enabled) (with Windows threads) 32 bits
+Detected hostname: undetected (type bp -p10 to detect host)
+Start loading system code from <qmake(brev),halt>.
+Finished loading system code.
+compiling(to(c),brev.pro,...)
+compile_time(15)
+total_compile_time(31)
+brev = time(31)
+
+Prolog execution halted(0). CPU time = 0.62s
+
+
+C:\A17\prolog\ptarau_prolog\pl2c>cl.exe -Febrev.exe -I..\lib brev.c ..\lib\c.c /FAcs /Fa./brevcod/ -DTHREADS=1 -DVCC=1 -MT -GF -TC -W2 -O2x -DWIN32 -DNDEBUG -D
+CONSOLE -D_WINDOWS -DMBCS -nologo -link /NODEFAULTLIB:LIBC /DEFAULTLIB:wsock32 /DEFAULTLIB:advapi32 /DEFAULTLIB:..\lib\bpr.lib /DEFAULTLIB:advapi32 /DYNAMICBAS
+:NO /FIXED /NXCOMPAT /MACHINE:X86 /MAP
+brev.c
+c.c
+Generating Code...
+
+C:\A17\prolog\ptarau_prolog\pl2c>
